@@ -1,0 +1,44 @@
+#who {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & > div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        padding: 4% 20%;
+        background-color: $light;
+        p {
+            font-size: 1.8rem;
+            margin: 3rem 0;
+            line-height: 1.4em;
+            color: $black;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .8s ease, transform .8s ease;
+            &.visible { opacity: 1; transform: translateY(0px); }
+        }
+        & > div {
+            font-size: 1.8rem;
+            color: $black;
+            display: flex;
+            align-items: center;
+        }
+    }
+    img {
+        width: 60px;
+        height: 60px;
+        margin: 0 10px;
+    }
+    h2 {
+        font-size: 2.8rem;
+        color: $black;
+        align-self: center;
+    }
+}
+@include phone {
+    #who {
+        & > div { padding: 4% 10%; }
+    }
+}

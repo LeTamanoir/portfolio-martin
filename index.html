@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Martin Saldinger">
+    <meta name="description" content="Hello I am Martin Saldinger, a Web-Dev enthusiast.">
+    <meta name="keywords" content="portfolio, martin, saldinger, martin saldinger, freelance, web-dev">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/tamanoir/favicon.png">
+    <title>Martin Saldinger</title>
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+</head>
+<body>
+    <header>
+        <img src="images/svg/logo.svg" alt="logo">
+        <nav>
+            <a href="#who">Who am I ?</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <section id="hero">
+        <h1>
+            Hello, I am<br>
+            <span>Martin Saldinger</span><br>
+            Web-Dev enthusiast
+        </h1>
+        <img src="images/profile.png" alt="photo de profile">
+    </section>
+    <section id="who">
+        <svg viewBox="0 0 1920 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1920 0L0 205.349H1920V0Z" fill="#f8f9fa"/>
+        </svg>
+        <div>
+            <h2>Who am I ?</h2>
+            <p>
+                Hello, my name is <b>Martin Saldinger</b>.<br>
+                I am a high school student and I am passionate about computer sciense, more precisely web development.<br>
+                Even though I still have a lot to learn in that field as it is so vast, I am convinced that I have the basic skills to propose my services.
+            </p>
+        </div>
+        <svg viewBox="0 0 1920 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 205.349L1920 0H0V205.349Z" fill="#f8f9fa"/>
+        </svg>    
+    </section>
+    <section id="skills">
+        <h2>Skills</h2>
+        <div>
+            <div class="ht">
+                <div>
+                    <img src="images/svg/html.svg" alt="logo html">
+                    <img src="images/svg/css.svg" alt="logo css">
+                </div>
+                <p>
+                    <span>HTML</span> & <span>CSS</span><br> I can design and code any kind of showcase website.
+                </p>
+            </div>
+    
+            <div class="js">
+                <div>
+                    <img src="images/svg/js.svg" alt="logo js">
+                    <img src="images/svg/scss.svg" alt="logo scss">
+                </div>
+                <p>
+                    <span>JavaScript</span> & <span>SCSS</span><br> I can make interactive UI along with dynamic animations.
+                </p>
+            </div>
+    
+            <div class="ph">
+                <div>
+                    <img src="images/svg/php.svg" alt="logo email">
+                    <img src="images/svg/nodejs.svg" alt="logo email">
+                </div>
+                <p>
+                    <span>PHP</span> & <span>NodeJS</span><br> I can develop web-application with backend.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <svg viewBox="0 0 1920 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1920 0L0 205.349H1920V0Z" fill="#f8f9fa"/>
+        </svg>
+        <div>
+            <h2>Contact</h2>
+            <div>
+                <div class="discord">
+                    <div>
+                        <img src="images/svg/discord.svg" alt="logo discord">
+                    </div>
+                    <div>
+                        <h2>Discord</h2>
+                        <p>Le Tamanoir#1772</p>
+                    </div>
+                </div>
+                <div class="github">
+                    <div>
+                        <img src="images/svg/github.svg" alt="logo github">
+                    </div>
+                    <div>
+                        <h2>Github</h2>
+                        <p><a target="_blanck" href="https://github.com/LeTamanoir">LeTamanoir</a></p>    
+                    </div>
+                </div>
+                <div class="email">
+                    <div>
+                        <img src="images/svg/email.svg" alt="logo email">
+                    </div>
+                    <div>
+                        <h2>Email</h2>
+                        <p><a target="_blanck" href="mailto: martin.saldinger@gmail.com">martin.saldinger@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>made by LeTamanoir | © All rights reserved</p>
+    </footer>
+
+    <script>
+        gsap.from("#hero > img",{duration:.8,x:50,opacity:0});
+        gsap.from("#hero > h1",{duration:.8,y:50,opacity:0});
+        gsap.from("nav > a",{duration:1,y:-20,opacity:0,ease:"elastic",stagger:.1});
+        gsap.from("header > img",{duration:.4,y:-20,opacity:0});
+        var displayElem=(entries)=>{entries.forEach(entry=>{if(entry.intersectionRatio>0){entry.target.classList.add("visible")}})};
+        var observer= new IntersectionObserver(displayElem,{threshold:1.0});
+        var skills=document.querySelectorAll('#skills>div>div');
+        var who=document.querySelector('#who>div>p');
+        var contacts=document.querySelectorAll('#contact>div>div>div');
+        skills.forEach(skill=>observer.observe(skill));
+        contacts.forEach(contact=>observer.observe(contact));
+        observer.observe(who);
+    </script>
+</body>
+</html>
