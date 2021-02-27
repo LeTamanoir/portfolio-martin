@@ -124,15 +124,10 @@
     <script>
         const btn = document.querySelector("header button");
         const style = document.getElementsByTagName('link');
-        btn.addEventListener("click", () => {
-            var uri = `${window.location.protocol}//${window.location.hostname}/portfolio-martin/style/`;
-            style[0].href == `${uri}style_1.css` ? style[0].href = `${uri}style_2.css` : style[0].href = `${uri}style_1.css`;
-        })
-
-
+        btn.addEventListener("click", () => { var uri = `${window.location.protocol}//${window.location.hostname}/portfolio-martin/style/`; style[0].href == `${uri}style_1.css` ? style[0].href = `${uri}style_2.css` : style[0].href = `${uri}style_1.css`; });
         gsap.from("#hero > img",{duration:.8,x:50,opacity:0});
         gsap.from("#hero > h1",{duration:.8,y:50,opacity:0});
-        gsap.from("nav > a",{duration:1,y:-20,opacity:0,ease:"elastic",stagger:.1});
+        gsap.from("nav > ul > li",{duration:1,y:-20,opacity:0,ease:"elastic",stagger:.1});
         gsap.from("header > img",{duration:.4,y:-20,opacity:0});
         var displayElem=(entries)=>{entries.forEach(entry=>{if(entry.intersectionRatio>0){entry.target.classList.add("visible")}})};
         var observer= new IntersectionObserver(displayElem,{threshold:1.0});
