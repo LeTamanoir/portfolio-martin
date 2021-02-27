@@ -115,9 +115,9 @@ button {
 }
 
 #who img {
-  width: 60px;
-  height: 60px;
-  margin: 0 10px;
+  width: 50px;
+  height: 50px;
+  margin-bottom: -10px;
 }
 
 #who h2 {
@@ -141,16 +141,32 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 1rem;
 }
 
-header svg, header img {
-  width: 100px;
+header button {
+  color: #ffff;
+  padding: .3rem .4rem;
+  border-radius: .5rem;
+  font-size: 1.3rem;
+  background-color: #373d42;
+  cursor: pointer;
+  border: solid 2px #373d42;
+  -webkit-transition: background-color .4s ease,color .4s ease;
+  transition: background-color .4s ease,color .4s ease;
+}
+
+header button:hover {
+  background-color: #ffff;
+  color: #373d42;
 }
 
 @media (max-width: 767px) {
@@ -159,15 +175,29 @@ header svg, header img {
         -ms-flex-pack: end;
             justify-content: flex-end;
   }
-  header img {
-    display: none;
-  }
 }
 
 nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+nav ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 nav a {
@@ -539,13 +569,13 @@ body {
           flex-direction: column;
 }
 
-@media (max-width: 1280px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   html {
     font-size: 14px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   html {
     font-size: 12px;
   }
@@ -563,4 +593,114 @@ body {
   background: #373d42;
   border-radius: 4px;
 }
-/*# sourceMappingURL=style.css.map */
+
+header {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#hero {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+#hero img {
+  margin: 0 3.8rem;
+  width: 30%;
+  border-radius: 100%;
+}
+
+#hero h1 {
+  margin: 0 2rem;
+}
+
+#who svg {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+#who h2 {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-left: 2rem;
+}
+
+#skills {
+  padding: 4%;
+}
+
+#skills > div > div {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 450px;
+  height: 220px;
+}
+
+#skills > div > div > div {
+  height: 220px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#skills > div > div img {
+  width: 110px;
+  margin: 0;
+}
+
+#skills .ht {
+  -o-border-image: linear-gradient(180deg, #E44F26 0%, #E44F26 50%, #1572B6 50%, #1572B6 100%) 1;
+     border-image: -webkit-gradient(linear, left top, left bottom, from(#E44F26), color-stop(50%, #E44F26), color-stop(50%, #1572B6), to(#1572B6)) 1;
+     border-image: linear-gradient(180deg, #E44F26 0%, #E44F26 50%, #1572B6 50%, #1572B6 100%) 1;
+}
+
+#skills .js {
+  -o-border-image: linear-gradient(180deg, #FBC02D 0%, #FBC02D 50%, #CC6699 50%, #CC6699 100%) 1;
+     border-image: -webkit-gradient(linear, left top, left bottom, from(#FBC02D), color-stop(50%, #FBC02D), color-stop(50%, #CC6699), to(#CC6699)) 1;
+     border-image: linear-gradient(180deg, #FBC02D 0%, #FBC02D 50%, #CC6699 50%, #CC6699 100%) 1;
+}
+
+#skills .ph {
+  -o-border-image: linear-gradient(180deg, #8993BE 0%, #8993BE 50%, #539E43 50%, #539E43 100%) 1;
+     border-image: -webkit-gradient(linear, left top, left bottom, from(#8993BE), color-stop(50%, #8993BE), color-stop(50%, #539E43), to(#539E43)) 1;
+     border-image: linear-gradient(180deg, #8993BE 0%, #8993BE 50%, #539E43 50%, #539E43 100%) 1;
+}
+
+#skills p {
+  font-size: 1.8rem;
+  margin: auto 1.4rem;
+}
+
+#contact svg {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+#contact .discord {
+  color: #ffff;
+  background-color: #7289DA;
+}
+
+#contact .discord p {
+  background-color: inherit;
+  border: solid thin #f8f9fa;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+#contact .github {
+  color: #ffff;
+  background-color: #161614;
+}
+
+#contact .email {
+  color: #ffff;
+  background-color: #EA4335;
+}
+/*# sourceMappingURL=style_2.css.map */

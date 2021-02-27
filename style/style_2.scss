@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+@import './variables';
+@import './reset';
+@import './mixins';
+
+@import './components/hero';
+@import './components/who';
+@import './components/header';
+@import './components/skills';
+@import './components/contact';
+@import './components/footer';
+
+html {
+    font-family: 'Nunito', sans-serif;
+    background-color: $white;
+}
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+@include tablet {
+    html { font-size: 14px; }
+}
+@include phone {
+    html { font-size: 12px; }
+}
+::-webkit-scrollbar-track { background: $white; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: $grey; border-radius: 4px; }
+
+header {
+    justify-content: center;
+}
+
+#hero {
+    flex-direction: row-reverse;
+    img {
+        margin: 0 3.8rem;
+        width: 30%;
+        border-radius: 100%;
+    }
+    h1 { margin: 0 2rem; }
+}
+
+#who {
+    svg { transform: scaleX(-1); }
+    h2 { align-self: flex-start; margin-left: 2rem; }
+}
+
+#skills {
+    padding: 4%;
+    & > div {
+        & > div {
+            flex-direction: row;
+            width: 450px;
+            height: 220px;
+            & > div { height: 220px; flex-direction: column; }
+            img { width: 110px; margin: 0; }
+        }
+    }
+    .ht { border-image: linear-gradient(180deg, #E44F26 0%, #E44F26 50%, #1572B6 50%, #1572B6 100%) 1; }
+    .js { border-image: linear-gradient(180deg, #FBC02D 0%, #FBC02D 50%, #CC6699 50%, #CC6699 100%) 1; }
+    .ph { border-image: linear-gradient(180deg, #8993BE 0%, #8993BE 50%, #539E43 50%, #539E43 100%) 1; }
+    p { font-size: 1.8rem; margin: auto 1.4rem; }
+}
+
+#contact {
+    svg { transform: scaleX(-1); }
+    .discord {
+        color: $white;
+        background-color:#7289DA;
+        p {
+            background-color: inherit;
+            border: solid thin $light;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+    }
+    .github {
+        color: $white;
+        background-color:#161614;
+    }
+    .email {
+        color: $white;
+        background-color: #EA4335;
+    }
+}

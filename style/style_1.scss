@@ -21,10 +21,10 @@ body {
     display: flex;
     flex-direction: column;
 }
-@media (max-width: 1280px) {
+@include tablet {
     html { font-size: 14px; }
 }
-@media (max-width: 768px) {
+@include phone {
     html { font-size: 12px; }
 }
 

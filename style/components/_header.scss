@@ -3,19 +3,40 @@ header {
     top: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
     box-sizing: border-box;
     padding: 1rem;
-    svg,img { width: 100px; }
+    button {
+        color: $white;
+        padding: .3rem .4rem;
+        border-radius: .5rem;
+        font-size: 1.3rem;
+        background-color: $grey;
+        cursor: pointer;
+        border: solid 2px $grey;
+        transition: background-color .4s ease,color .4s ease;
+        &:hover {
+            background-color: $white;
+            color: $grey;
+        }
+    }
 }
 @include phone {
     header {
         justify-content: flex-end;
-        img { display: none; }
     }
 }
 nav {
     display: flex;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            display: flex;
+            align-items: center;
+        }
+    }
     a {
         font-size: 1.4rem;
         margin: .75rem 1rem;
