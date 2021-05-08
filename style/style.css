@@ -1,0 +1,413 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #EDF0FD;
+  color: #3E4256;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+body > header {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+body > header h2 {
+  margin: 0 20px;
+  font-size: 1.4rem;
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+body > header h2 span {
+  color: #D66161;
+}
+
+body > header nav {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+body > header nav ul {
+  margin: 1em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+body > header nav li {
+  margin: 5px 20px;
+}
+
+body > header nav a {
+  font-size: 1.4rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  -webkit-transition: color .2s ease, background-color .2s ease;
+  transition: color .2s ease, background-color .2s ease;
+}
+
+body > header nav a:hover {
+  background-color: #3E4256;
+  color: white;
+}
+
+body > header nav a.active {
+  background-color: #3E4256;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  body > header nav li {
+    margin: 15px 5px;
+  }
+  body > header nav ul {
+    margin: 20px 0;
+  }
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+footer {
+  margin: auto 0 10px;
+}
+
+#home div {
+  margin: 4rem 0 6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#home div img {
+  width: 5rem;
+  margin: 1rem;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+}
+
+#home div img:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+#home h1 {
+  font-weight: 400;
+  font-size: 2.2rem;
+  margin-right: 2rem;
+}
+
+#home h1 span:nth-of-type(1) {
+  line-height: 1.6em;
+  font-weight: 500;
+  font-size: 4.4rem;
+}
+
+#home h1 span:not(:nth-of-type(1)) {
+  color: #EDF0FD;
+  border-radius: 5px;
+  padding: 2px 8px;
+  font-weight: 500;
+}
+
+#home h1 span:not(:nth-of-type(1)):nth-of-type(2) {
+  background-color: #89A1DC;
+}
+
+#home h1 span:not(:nth-of-type(1)):nth-of-type(3) {
+  background-color: #87D18F;
+}
+
+@media (max-width: 768px) {
+  #home h1 {
+    text-align: center;
+    margin-top: 6rem;
+    font-size: 1.8rem;
+  }
+  #home h1 span:not(:nth-of-type(1)) {
+    font-size: 1.8rem;
+  }
+}
+
+#about h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  margin: .5em;
+}
+
+#about h2::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100vw;
+  height: 110%;
+  z-index: -1;
+  top: -5%;
+  left: calc(-150vw);
+  -webkit-animation: enter 1s forwards;
+          animation: enter 1s forwards;
+}
+
+#about h2:nth-of-type(1)::before {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  background-color: #D66161;
+}
+
+#about h2:nth-of-type(2)::before {
+  -webkit-animation-delay: .5s;
+          animation-delay: .5s;
+  background-color: #87D18F;
+}
+
+#about h2:nth-of-type(3)::before {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  background-color: #89A1DC;
+}
+
+#about h3 {
+  padding-left: 1rem;
+}
+
+#about p {
+  padding-left: 2rem;
+}
+
+#about h4 {
+  padding-left: 2rem;
+}
+
+#about ul {
+  padding-left: 3rem;
+}
+
+#about a {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  #about div {
+    width: 90%;
+    margin-bottom: 4rem;
+  }
+}
+
+@-webkit-keyframes enter {
+  from {
+    left: calc(-150vw);
+  }
+  to {
+    left: calc(-100vw + 105%);
+  }
+}
+
+@keyframes enter {
+  from {
+    left: calc(-150vw);
+  }
+  to {
+    left: calc(-100vw + 105%);
+  }
+}
+
+#skills-container {
+  width: 60%;
+  margin: 2rem 0 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 2rem;
+}
+
+@media (max-width: 768px) {
+  #skills-container {
+    width: 90%;
+  }
+}
+
+#skills-container header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 50%;
+  position: relative;
+}
+
+#skills-container header::before {
+  content: "";
+  width: 105vw;
+  height: 2px;
+  display: block;
+  position: absolute;
+  left: calc(-55vw + 50%);
+  background-color: #3E4256;
+  top: 1.6rem;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  #skills-container header {
+    width: 80%;
+  }
+}
+
+#skills-container #frontend-btn, #skills-container #backend-btn {
+  background-color: #EDF0FD;
+  color: #3E4256;
+  font-size: 2rem;
+  border: none;
+  padding: .4rem .8rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  #skills-container #frontend-btn, #skills-container #backend-btn {
+    font-size: 1.6rem;
+  }
+}
+
+#skills-container #frontend-btn.click, #skills-container #backend-btn.click {
+  border: solid 2px #3E4256;
+  border-radius: 50px;
+}
+
+#skills-container #frontend, #skills-container #backend {
+  display: none;
+  width: 90%;
+  margin: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #3E4256;
+}
+
+#skills-container #frontend.deploy, #skills-container #backend.deploy {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#skills-container #frontend ul, #skills-container #backend ul {
+  list-style: none;
+}
+
+#skills-container #frontend ul li, #skills-container #backend ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#skills-container #frontend ul li:not(:first-child), #skills-container #backend ul li:not(:first-child) {
+  margin: 30px 0 0;
+}
+
+#skills-container #frontend ul li p, #skills-container #backend ul li p {
+  font-size: 1.4rem;
+  margin: 0 0 0 2rem;
+}
+
+@media (max-width: 768px) {
+  #skills-container #frontend ul li p, #skills-container #backend ul li p {
+    font-size: 1.4rem;
+  }
+}
+
+#skills-container #frontend ul li img, #skills-container #backend ul li img {
+  width: 6rem;
+  height: 6rem;
+}
+/*# sourceMappingURL=style.css.map */
