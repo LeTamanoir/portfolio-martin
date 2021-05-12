@@ -198,5 +198,184 @@ footer {
 }
 
 #writeups {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &:not(.full) {
+        flex-direction: row;
+
+        .writeup {
+            cursor: pointer;
+            margin: 10px;
+            min-width: 16rem;
+        }
+    }
+    .banner {
+        display: block;
+        margin: 0 20px 10px;
+        width: 8rem;
+        height: 8rem;
+    }
+    .writeup {
+        padding: 10px;
+        background-color: $light;
+        border-radius: .4rem;
+        box-sizing: border-box;
+        & > div {
+            display: block;
+            box-sizing: border-box;
+        }
+        h2 {
+            margin: .5rem 0 1.5rem;
+            font-size: 1.8rem;
+        }
+        .date {
+            display: block;
+            font-size: .8rem;
+            text-align: end;
+            margin-top: 1rem;
+        }
+    }
+    &.full {
+        flex-direction: column;
+
+        .writeup {
+            margin: 1.5rem;
+            width: 90%;
+        }
+    }
+}
+
+#show_more,#back_writeups {
+    cursor: pointer;
+    background-color: $blue;
+    padding: 5px 12px;
+    margin: 1rem;
+    font-size: 1.4rem;
+    color: $white;
+    border: none;
+    border-radius: 2rem;
+    transition: background-color .2s ease;
+
+    &.hide {
+        display: none;
+    }
+    &:hover {
+        background-color: #516fbd;
+    }
+}
+#search_bar {
+    background-color: $light;
+    border: solid 2px $black;
+    padding: 6px 10px;
+    font-size: 1.2rem;
+    margin: 1rem;
+    border-radius: .6rem;
+    transition: width .2s ease;
+    outline: none;
+    width: 10rem;
+
+    &:focus {
+        width: 20rem;
+    }
+    &.hide {
+        display: none;
+    }
+}
+
+#conn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+        background-color: $light;
+        border: solid 2px $black;
+        padding: 8px 12px;
+        font-size: 1.4rem;
+        margin: 1rem;
+        border-radius: .6rem;
+        transition: background-color .2s ease;
+    }
     
+    input[type=submit] {
+        cursor: pointer;
+        background-color: $blue;
+        color: $white;
+        border: none;
+        border-radius: 2rem;
+        &:hover {
+            background-color: #516fbd;
+        }
+    }
+}
+
+#editor {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+
+    select {
+        background-color: $light;
+        border: solid 2px $black;
+        padding: 6px 10px;
+        font-size: 1.2rem;
+        border-radius: .2rem;
+    }
+
+    & > div:nth-child(2) {
+        margin: 1rem;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 60vh;
+        & > * {
+            border: solid 2px $black;
+            outline: none !important;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            padding: 5px;
+        }
+        textarea {
+            width: 50%;
+            background-color: $light;
+            height: 100%;
+            resize: none;
+        }
+        & > div {
+            width: 50%;
+            height: 100%;
+            background-color: $light;
+            overflow-y: scroll;
+        }
+    }
+    #title,#banner {
+        background-color: $light;
+        border: solid 2px $black;
+        padding: 6px 10px;
+        font-size: 1.2rem;
+        border-radius: .2rem;
+    }
+    button {
+        cursor: pointer;
+        padding: 8px 12px;
+        margin: .5rem;
+        font-size: 1.4rem;
+        color: $white;
+        border: none;
+        border-radius: 2rem;
+
+        &#delete {
+            background-color: $red;
+        }
+        &#update {
+            background-color: $green;
+        }
+        &#send {
+            background-color: $blue;
+        }
+    }
 }

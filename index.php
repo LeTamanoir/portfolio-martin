@@ -9,6 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Martin Saldinger</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/github.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.0.4/markdown-it.min.js"></script>
+    <script defer src="js/markdown.js"></script>
+    <script src="js/emoji.js"></script>
 </head>
 
     <header>
@@ -49,20 +56,57 @@
     
     <?php elseif ($_GET['page'] === "login") : ?>
         
-        <form action="?page=login" method="POST">
-            <input type="text" name="username">
-            <input type="password" name="password">
-            <input type="submit" value="connect">
+        <?php if (empty($_POST['username']) && empty($_POST['password'])) : ?>
+            
+            <form action="?page=login" method="POST" id="conn">
+                <input type="text" name="username">
+                <input type="password" name="password">
+                <input type="submit" value="connect">
+            </form>
 
-            <?php var_dump($_POST) ?>
-        
-        </form>
+        <?php else : ?>
+            <?php    
+                include('settings.php');
+                if ($_POST["username"] === $settings["username"] && md5($_POST["password"]) === $settings["password"]) {
+                    session_start();
+                    $_SESSION['allow_editor_access'] = true;
+                    header('Location: ?page=editor');
+                    
+                } else {
+                    header('Location: ?page=login');
+                }
+            ?>
+        <?php endif ?>
 
+    <?php elseif ($_GET['page'] === "editor") : ?>
+
+        <?php
+        session_start(); 
+        if ($_SESSION['allow_editor_access'] === true) { ?>
+            <script defer src="js/editor.js"></script>
+            <main id="editor">
+                <div>
+                    <select id="old_wp_container" onchange="modify()">
+                        <option value="">Modify a writeup</option>
+                    </select>
+                    <input placeholder="title" id="title">
+                    <input placeholder="banner url" id="banner">
+                </div>
+                <div>
+                    <textarea></textarea>
+                    <div id="render" class="markdown-body"></div>
+                </div>
+                <button id="send" onclick="submit_wp()">send</button>
+                <div>
+                    <button id="update" onclick="update_wp()">update</button>
+                    <button id="delete" onclick="delete_wp()">delete</button>
+                </div>
+            </main>
         <?php 
-            if ($_POST['username'] )
-
+        } else {
+            header('Location: ?page=login'); }
         ?>
-    
+
     <?php elseif ($_GET['page'] === "about") : ?>
     
         <main id="about">
@@ -70,7 +114,7 @@
                 <h2>About</h2>
                 <p>
                     Hello, my name is Martin Saldinger.
-                    I am passionate about computer sciense, more precisely web development and pentesting.                  
+                    I am passionate about computer science, more precisely web development and pentesting.                  
                 </p>
                 <h2>Education</h2>
                 <h3><b>PREMIERE GENERALE |</b> Notre Dame Institute – St Germain en Laye</h3>
@@ -146,14 +190,21 @@
 
     <?php elseif ($_GET['page'] === "writeups") : ?>
 
-        <main id="writeups">
-            coming soon
-        </main>
+        <script defer src="js/articles.js"></script>
+        <input id="search_bar" type="text" placeholder="search">
+        <main id="writeups"></main>
+        <button onclick="get_articles()" id="show_more">more</button>
 
     <?php endif ?>
     
     <footer>
-        made by Le_Tamanoir | &copy; all rights reserved
+        made by Le_Tamanoir | &copy; all rights reserved | 
+        
+        <?php session_start(); if (empty($_SESSION['allow_editor_access'])) : ?>
+            <a href="?page=login">login</a>
+        <?php else : ?>
+            <a href="?page=editor">editor</a>
+        <?php endif ?>
     </footer>
 <body>
 </body>

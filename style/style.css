@@ -410,4 +410,238 @@ footer {
   width: 6rem;
   height: 6rem;
 }
+
+#writeups {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#writeups:not(.full) {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#writeups:not(.full) .writeup {
+  cursor: pointer;
+  margin: 10px;
+  min-width: 16rem;
+}
+
+#writeups .banner {
+  display: block;
+  margin: 0 20px 10px;
+  width: 8rem;
+  height: 8rem;
+}
+
+#writeups .writeup {
+  padding: 10px;
+  background-color: #fcfcfc;
+  border-radius: .4rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#writeups .writeup > div {
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#writeups .writeup h2 {
+  margin: .5rem 0 1.5rem;
+  font-size: 1.8rem;
+}
+
+#writeups .writeup .date {
+  display: block;
+  font-size: .8rem;
+  text-align: end;
+  margin-top: 1rem;
+}
+
+#writeups.full {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#writeups.full .writeup {
+  margin: 1.5rem;
+  width: 90%;
+}
+
+#show_more, #back_writeups {
+  cursor: pointer;
+  background-color: #89A1DC;
+  padding: 5px 12px;
+  margin: 1rem;
+  font-size: 1.4rem;
+  color: #EDF0FD;
+  border: none;
+  border-radius: 2rem;
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+}
+
+#show_more.hide, #back_writeups.hide {
+  display: none;
+}
+
+#show_more:hover, #back_writeups:hover {
+  background-color: #516fbd;
+}
+
+#search_bar {
+  background-color: #fcfcfc;
+  border: solid 2px #3E4256;
+  padding: 6px 10px;
+  font-size: 1.2rem;
+  margin: 1rem;
+  border-radius: .6rem;
+  -webkit-transition: width .2s ease;
+  transition: width .2s ease;
+  outline: none;
+  width: 10rem;
+}
+
+#search_bar:focus {
+  width: 20rem;
+}
+
+#search_bar.hide {
+  display: none;
+}
+
+#conn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#conn input {
+  background-color: #fcfcfc;
+  border: solid 2px #3E4256;
+  padding: 8px 12px;
+  font-size: 1.4rem;
+  margin: 1rem;
+  border-radius: .6rem;
+  -webkit-transition: background-color .2s ease;
+  transition: background-color .2s ease;
+}
+
+#conn input[type=submit] {
+  cursor: pointer;
+  background-color: #89A1DC;
+  color: #EDF0FD;
+  border: none;
+  border-radius: 2rem;
+}
+
+#conn input[type=submit]:hover {
+  background-color: #516fbd;
+}
+
+#editor {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#editor select {
+  background-color: #fcfcfc;
+  border: solid 2px #3E4256;
+  padding: 6px 10px;
+  font-size: 1.2rem;
+  border-radius: .2rem;
+}
+
+#editor > div:nth-child(2) {
+  margin: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  height: 60vh;
+}
+
+#editor > div:nth-child(2) > * {
+  border: solid 2px #3E4256;
+  outline: none !important;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+}
+
+#editor > div:nth-child(2) textarea {
+  width: 50%;
+  background-color: #fcfcfc;
+  height: 100%;
+  resize: none;
+}
+
+#editor > div:nth-child(2) > div {
+  width: 50%;
+  height: 100%;
+  background-color: #fcfcfc;
+  overflow-y: scroll;
+}
+
+#editor #title, #editor #banner {
+  background-color: #fcfcfc;
+  border: solid 2px #3E4256;
+  padding: 6px 10px;
+  font-size: 1.2rem;
+  border-radius: .2rem;
+}
+
+#editor button {
+  cursor: pointer;
+  padding: 8px 12px;
+  margin: .5rem;
+  font-size: 1.4rem;
+  color: #EDF0FD;
+  border: none;
+  border-radius: 2rem;
+}
+
+#editor button#delete {
+  background-color: #D66161;
+}
+
+#editor button#update {
+  background-color: #87D18F;
+}
+
+#editor button#send {
+  background-color: #89A1DC;
+}
 /*# sourceMappingURL=style.css.map */
