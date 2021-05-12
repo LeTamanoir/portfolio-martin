@@ -59,15 +59,22 @@ function modify() {
     update.style.display = 'block';
     delete_.style.display = 'block';
 
-    ID = old_wp_container.value
-    old_wps.map(wp => {
-        if (wp['id'] == ID) {
-            input.innerHTML = wp['content'];
-            output.innerHTML = md.render(wp['content']);
-            title.value = wp['title'];
-            banner.value = wp['banner'];
-        }
-    })
+    if (old_wp_container.value == "new") {
+        input.innerHTML = "";
+        output.innerHTML = "";
+        title.value = "";
+        banner.value = "";
+    } else {
+        ID = old_wp_container.value
+        old_wps.map(wp => {
+            if (wp['id'] == ID) {
+                input.innerHTML = wp['content'];
+                output.innerHTML = md.render(wp['content']);
+                title.value = wp['title'];
+                banner.value = wp['banner'];
+            }
+        })
+    }
 }
 
 function delete_wp() {
@@ -88,4 +95,5 @@ function delete_wp() {
 update.style.display = 'none';
 delete_.style.display = 'none';
 
-get_old_wp()
+get_old_wp();
+get_file_system();

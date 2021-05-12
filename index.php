@@ -16,6 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.0.4/markdown-it.min.js"></script>
     <script defer src="js/markdown.js"></script>
     <script src="js/emoji.js"></script>
+    <link rel="icon" type="image/png" href="/portfolio/favicon.png">
 </head>
 
     <header>
@@ -80,14 +81,13 @@
 
     <?php elseif ($_GET['page'] === "editor") : ?>
 
-        <?php
-        session_start(); 
-        if ($_SESSION['allow_editor_access'] === true) { ?>
+        <?php session_start(); if ($_SESSION['allow_editor_access'] === true) : ?>
+
             <script defer src="js/editor.js"></script>
             <main id="editor">
                 <div>
                     <select id="old_wp_container" onchange="modify()">
-                        <option value="">Modify a writeup</option>
+                        <option value="new">new writeup</option>
                     </select>
                     <input placeholder="title" id="title">
                     <input placeholder="banner url" id="banner">
@@ -102,10 +102,8 @@
                     <button id="delete" onclick="delete_wp()">delete</button>
                 </div>
             </main>
-        <?php 
-        } else {
-            header('Location: ?page=login'); }
-        ?>
+
+        <?php else : header('Location: ?page=login'); endif ?>
 
     <?php elseif ($_GET['page'] === "about") : ?>
     
