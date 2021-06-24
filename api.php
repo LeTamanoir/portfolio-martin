@@ -10,13 +10,13 @@ $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
 if ($_SESSION['allow_editor_access'] === true) {
 
     if ($_GET['action'] === 'upload') {
-        $request = $conn->prepare("INSERT INTO `writeups` (`title`, `banner`, `content`, `date`, `password`) VALUES (?, ?, ?, ?, ?)");
-        $request->execute([$_POST['title'],$_POST['banner'],$_POST['content'],date("Y:m:d"),$_POST['password']]);
+        $request = $conn->prepare("INSERT INTO `writeups` (`title`, `banner`, `content`, `date`, `tags`, `password`) VALUES (?, ?, ?, ?, ?, ?)");
+        $request->execute([$_POST['title'],$_POST['banner'],$_POST['content'],date("Y:m:d"),$_POST['tags'],$_POST['password']]);
     }
     elseif ($_GET['action'] === 'edit') {
-        $request = $conn->prepare("UPDATE `writeups` SET `title`= ?,`banner`= ?,`content`= ?,`date`= ?,`password`= ? WHERE `id` = ?");
+        $request = $conn->prepare("UPDATE `writeups` SET `title`= ?,`banner`= ?,`content`= ?,`date`= ?,`password`= ?,`tags`= ? WHERE `id` = ?");
         var_dump($_POST);
-        $request->execute([$_POST['title'],$_POST['banner'],$_POST['content'],date("Y:m:d"),$_POST['password'],$_POST['id']]);
+        $request->execute([$_POST['title'],$_POST['banner'],$_POST['content'],date("Y:m:d"),$_POST['password'],$_POST['tags'],$_POST['id']]);
     }
     elseif ($_GET['action'] === 'delete') {
         $request = $conn->prepare("DELETE FROM `writeups` WHERE `id` = ?");
@@ -27,13 +27,34 @@ if ($_SESSION['allow_editor_access'] === true) {
         $writeups = $request->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($writeups);
     }
+    elseif ($_GET['action'] === 'upload_image') {
+        if (!file_exists('/var/www/WebSites/portfolio/prototype/images/' . $_POST['name'] . '.png')) {
+            file_put_contents('/var/www/WebSites/portfolio/prototype/images/' . $_POST['name'] . '.png', file_get_contents($_POST['image']));
+            echo '{"state":"success"}';
+        }
+        else {
+            echo '{"state":"failed"}';
+        }
+    }
+    elseif ($_GET['action'] === 'manage_image') {
+        if (!empty($_POST['name'])) {
+            unlink('/var/www/WebSites/portfolio/prototype/images/' . $_POST['name']);
+            echo '{"state":"success"}';
+        }
+        else {
+            $files = scandir('/var/www/WebSites/portfolio/prototype/images/');
+            unset($files[0]);unset($files[1]);
+
+            echo json_encode($files);
+        }
+    }
 }
 
-if ($_GET['action'] === 'display' && !empty($_GET['top'])) {
-    $request = $conn->prepare("SELECT `title`,`banner`,`date`,`id` FROM `writeups` ORDER BY `id` DESC LIMIT ?");
-    $request->execute([$_GET['top']]);
+if ($_GET['action'] === 'display' && empty($_GET['id']) && empty($_GET['search'])) {
+    $request = $conn->prepare("SELECT `title`,`banner`,`date`,`id`,`tags` FROM `writeups` ORDER BY `id` DESC");
+    $request->execute([]);
     $writeups = $request->fetchAll(PDO::FETCH_ASSOC);
-
+    
     echo json_encode($writeups);
 }
 elseif ($_GET['action'] === 'display' && !empty($_GET['id'])) {
@@ -48,10 +69,11 @@ elseif ($_GET['action'] === 'display' && !empty($_GET['id'])) {
     }
 }
 elseif ($_GET['action'] === 'display' && !empty($_GET['search'])) {
-    $request = $conn->prepare("SELECT `title`,`banner`,`date`,`id` FROM `writeups` WHERE `title` LIKE ? OR `content` LIKE ?");
-    $request->execute(["%{$_GET['search']}%","%{$_GET['search']}%"]);
+    $request = $conn->prepare("SELECT `title`,`banner`,`date`,`id`,`tags` FROM `writeups` WHERE `title` LIKE ? OR `content` LIKE ? OR `tags` LIKE ?");
+    $request->execute(["%{$_GET['search']}%","%{$_GET['search']}%","%{$_GET['search']}%"]);
     $writeups = $request->fetchAll(PDO::FETCH_ASSOC);
-
+    
     echo json_encode($writeups);
 }
+
 ?>

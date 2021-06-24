@@ -202,6 +202,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 2rem;
 
     &:not(.full) {
         flex-direction: row;
@@ -210,13 +211,13 @@ footer {
             cursor: pointer;
             margin: 10px;
             min-width: 16rem;
-            height: 16rem
         }
     }
     .banner {
         display: block;
         margin: 0 20px 10px;
         width: 10rem;
+        height: 10rem;
     }
     .writeup {
         padding: 10px;
@@ -225,18 +226,37 @@ footer {
         box-sizing: border-box;
         position: relative;
         & > div {
-            display: block;
+            display: flex;
+            flex-direction: column;
             box-sizing: border-box;
         }
         h2 {
-            margin: .5rem .5rem 1.5rem;
+            margin: .5rem .5rem 0;
             font-size: 1.8rem;
         }
+        .tags {
+            margin: .3rem .3rem 1rem;
+            display: flex;
+            span {
+                padding: 2px 4px;
+                font-size: 1.1rem;
+                font-weight: 500;
+                border: 1px solid;
+                border-radius: 4px;
+                margin: 6px;
+            }
+            span[tag="htb"] { color : #26861a; border-color: #26861a; }
+            span[tag="thm"] { color : #6d2a2a; border-color: #6d2a2a; }
+            span[tag="hard"] { color : #fd0100; border-color: #fd0100; }
+            span[tag="insane"] { color : #757779; border-color: #757779; }
+            span[tag="easy"] { color : #8dc63f; border-color : #8dc63f; }
+            span[tag="custom"] { color : #3f79c6; border-color : #3f79c6; }
+            span[tag="rootme"] { color: $black; border-color: $black; }
+            span[tag="koth"] { color : #dc3545; border-color: #dc3545; }
+            span[tag="script"] { color : #a52494; border-color: #a52494; }
+        }
         .date {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            display: block;
+            margin-left: auto;
             font-size: .8rem;
         }
     }
@@ -245,16 +265,7 @@ footer {
         color: $red;
         font-size: 2rem;
     }
-    .error-btn {
-        cursor: pointer;
-        padding: 4px 8px;
-        margin: .5rem;
-        font-size: 1.4rem;
-        color: $black;
-        border: $black solid 2px;
-        border-radius: 2rem;
-        background-color: $white;
-    }
+    
     &.full {
         flex-direction: column;
 
@@ -265,11 +276,11 @@ footer {
     }
 }
 
-#show_more,#back_writeups {
+#back_writeups,.error-btn {
     cursor: pointer;
     background-color: $blue;
     padding: 5px 12px;
-    margin: 1rem;
+    margin: 1rem 0 2rem;
     font-size: 1.4rem;
     color: $white;
     border: none;
@@ -306,6 +317,21 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: $light;
+    border: solid 2px $black;
+    border-radius: .6rem;
+
+    p {
+        font-size: 1.2rem;
+        margin: 1rem;
+    }
+
+    .error {
+        font-weight: bold;
+        color: $red;
+        font-size: 1.4rem;
+        margin: .25rem;
+    }
 
     input {
         background-color: $light;
@@ -333,6 +359,7 @@ footer {
     width: 90%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
 
     select {
         background-color: $light;
@@ -369,13 +396,6 @@ footer {
             overflow-y: scroll;
         }
     }
-    #title,#banner,#password {
-        background-color: $light;
-        border: solid 2px $black;
-        padding: 6px 10px;
-        font-size: 1.2rem;
-        border-radius: .2rem;
-    }
     button {
         cursor: pointer;
         padding: 8px 12px;
@@ -394,5 +414,110 @@ footer {
         &#send {
             background-color: $blue;
         }
+    }
+    & > div:nth-child(3) {
+        display: flex;
+        flex-direction: column;
+        button {
+            background-color: $blue;
+        }
+        #manage-image-container {
+            display: none;
+            align-items: center;
+            flex-direction: column;
+            position: absolute;
+            bottom: 30vh;
+            left: 15vw;
+            width: 70vw;
+            height: auto;
+            border: solid 2px $black;
+            border-radius: 20px;
+            background-color: #ffffff;
+
+            button {
+                background-color: $red;
+            }
+
+            #manage-image button {
+                background-image: url('../svg/cross.svg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 0;
+                margin: 0;
+                width: 1.8rem;
+                height: 1.8rem;
+                margin-left: .6rem;
+            }
+            #manage-image {
+                display: flex;
+            }
+            #manage-image div {
+                display: flex;
+                align-items: center;
+                background-color: #c0c0c0;
+                padding: 6px 10px;
+                border-radius: 10px;
+                margin: .5rem;
+
+                p {
+                    margin: 0;
+                }
+            }
+            &.visible {
+                display: flex;
+            }
+        }
+        #image-container {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            position: absolute;
+            top: 5vh;
+            left: 5vw;
+            width: 90vw;
+            height: 90vh;
+            border-radius: 20px;
+            border: solid 2px $black;
+            background-color: #ffffff;
+
+            button {
+                background-color: $blue;
+                &:nth-of-type(2),&:nth-of-type(3) {
+                    background-color: $red;
+                }
+            }
+
+            #image-input {
+                display: none;
+            }
+            div:nth-of-type(1) {
+                width: 90vw;
+                height: 80vh;
+            }
+            div:nth-of-type(2) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            label {
+                border: 2px solid $black;
+                border-radius: 20px;
+                color: $black;
+                display: block;
+                padding: 6px 12px;
+                cursor: pointer;
+                margin: .5rem;
+            }
+            &.visible {
+                display: flex;
+            }
+        }
+    }
+    #title,#banner,#password,#tags,#image-name {
+        background-color: $light;
+        border: solid 2px $black;
+        padding: 6px 10px;
+        font-size: 1.2rem;
+        border-radius: .2rem;
     }
 }

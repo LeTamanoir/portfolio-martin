@@ -1,0 +1,48 @@
+<script defer src="js/editor.js"></script>
+<script src="js/cropper.js"></script>
+<link rel="stylesheet" href="style/cropper.css">
+<main id="editor">
+    <div>
+        <select id="old_wp_container" onchange="modify()">
+            <option value="new">new writeup</option>
+        </select>
+        <input placeholder="title" id="title">
+        <input placeholder="banner url" id="banner">
+        <input placeholder="password" id="password">
+        <input placeholder="tag1,tag2,etc ..." id="tags">
+    </div>
+    <div>
+        <textarea></textarea>
+        <div id="render" class="markdown-body"></div>
+    </div>
+    <div>
+        <div>
+            <button onclick="add_image()">add image</button>
+            <button onclick="manage_images()">manage image</button>
+        </div>
+        <div id="image-container">
+            <div>
+                <img id="image" src="">
+            </div>
+            <div>
+                <input type="text" id="image-name" placeholder="image name">
+                <label class="custom-file-upload">
+                    <input type="file" accept="image/*" id="image-input"/>
+                    import image
+                </label>
+                <button onclick="upload_image()">upload</button>
+                <button onclick="clear_image()">clear</button>
+                <button onclick="add_image()">close</button>
+            </div>
+        </div>
+        <div id="manage-image-container">
+            <div id="manage-image"></div>
+            <button onclick="close_manage_image()">close</button>
+        </div>
+    </div>
+    <button id="send" onclick="submit_wp()">send</button>
+    <div>
+        <button id="update" onclick="update_wp()">update</button>
+        <button id="delete" onclick="delete_wp()">delete</button>
+    </div>
+</main>
