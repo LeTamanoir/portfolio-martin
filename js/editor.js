@@ -6,14 +6,17 @@ var old_wp_container = document.querySelector("#old_wp_container");
 var old_wps;
 var send = document.querySelector("#send");
 var update = document.querySelector("#update");
+var password = document.querySelector("#password");
 var delete_ = document.querySelector("#delete");
+var file_ = document.querySelector("#file");
 var ID;
 
 function submit_wp() {
     data = new URLSearchParams({
         'title': title.value,
         'content': input.value,
-        'banner': banner.value
+        'banner': banner.value,
+        'password': password.value
     })
     fetch('api.php?action=upload', {
         method: 'POST',
@@ -28,7 +31,7 @@ input.addEventListener("input", () => {
 })
 
 function get_old_wp() {
-    fetch(`api.php?action=display`)
+    fetch(`api.php?action=getall`)
     .then(res => res.json())
     .then(data => {
         old_wps = data
@@ -44,9 +47,10 @@ function update_wp() {
         'title': title.value,
         'content': input.value,
         'banner': banner.value,
-        'id': ID
+        'id': ID,
+        'password': password.value
     })
-    fetch(`api.php?action=edit&id=${ID}`, {
+    fetch(`api.php?action=edit`, {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: data
@@ -55,16 +59,19 @@ function update_wp() {
 }
 
 function modify() {
-    send.style.display = 'none';
-    update.style.display = 'block';
-    delete_.style.display = 'block';
-
     if (old_wp_container.value == "new") {
+        send.style.display = 'block';
+        update.style.display = 'none';
+        delete_.style.display = 'none';
         input.innerHTML = "";
         output.innerHTML = "";
         title.value = "";
         banner.value = "";
+        password.value = "";
     } else {
+        send.style.display = 'none';
+        update.style.display = 'block';
+        delete_.style.display = 'block';
         ID = old_wp_container.value
         old_wps.map(wp => {
             if (wp['id'] == ID) {
@@ -72,6 +79,7 @@ function modify() {
                 output.innerHTML = md.render(wp['content']);
                 title.value = wp['title'];
                 banner.value = wp['banner'];
+                password.value = wp['password'];
             }
         })
     }
@@ -84,7 +92,7 @@ function delete_wp() {
     data = new URLSearchParams({
         'id': ID
     })
-    fetch(`api.php?action=delete&id=${ID}`, {
+    fetch(`api.php?action=delete`, {
         method: 'POST',
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: data
@@ -96,4 +104,9 @@ update.style.display = 'none';
 delete_.style.display = 'none';
 
 get_old_wp();
-get_file_system();
+
+document.addEventListener('keydown', e => {
+    if (e.code == "Tab") {
+        e.preventDefault();
+    }
+})

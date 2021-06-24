@@ -412,7 +412,7 @@ footer {
 }
 
 #writeups {
-  width: 90%;
+  width: 80%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -434,13 +434,13 @@ footer {
   cursor: pointer;
   margin: 10px;
   min-width: 16rem;
+  height: 16rem;
 }
 
 #writeups .banner {
   display: block;
   margin: 0 20px 10px;
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
 }
 
 #writeups .writeup {
@@ -449,6 +449,7 @@ footer {
   border-radius: .4rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  position: relative;
 }
 
 #writeups .writeup > div {
@@ -458,15 +459,33 @@ footer {
 }
 
 #writeups .writeup h2 {
-  margin: .5rem 0 1.5rem;
+  margin: .5rem .5rem 1.5rem;
   font-size: 1.8rem;
 }
 
 #writeups .writeup .date {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   display: block;
   font-size: .8rem;
-  text-align: end;
-  margin-top: 1rem;
+}
+
+#writeups .error {
+  font-weight: bold;
+  color: #D66161;
+  font-size: 2rem;
+}
+
+#writeups .error-btn {
+  cursor: pointer;
+  padding: 4px 8px;
+  margin: .5rem;
+  font-size: 1.4rem;
+  color: #3E4256;
+  border: #3E4256 solid 2px;
+  border-radius: 2rem;
+  background-color: #EDF0FD;
 }
 
 #writeups.full {
@@ -615,7 +634,7 @@ footer {
   overflow-y: scroll;
 }
 
-#editor #title, #editor #banner {
+#editor #title, #editor #banner, #editor #password {
   background-color: #fcfcfc;
   border: solid 2px #3E4256;
   padding: 6px 10px;

@@ -91,6 +91,7 @@
                     </select>
                     <input placeholder="title" id="title">
                     <input placeholder="banner url" id="banner">
+                    <input placeholder="password" id="password">
                 </div>
                 <div>
                     <textarea></textarea>

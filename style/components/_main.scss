@@ -198,7 +198,7 @@ footer {
 }
 
 #writeups {
-    width: 90%;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -210,33 +210,50 @@ footer {
             cursor: pointer;
             margin: 10px;
             min-width: 16rem;
+            height: 16rem
         }
     }
     .banner {
         display: block;
         margin: 0 20px 10px;
-        width: 8rem;
-        height: 8rem;
+        width: 10rem;
     }
     .writeup {
         padding: 10px;
         background-color: $light;
         border-radius: .4rem;
         box-sizing: border-box;
+        position: relative;
         & > div {
             display: block;
             box-sizing: border-box;
         }
         h2 {
-            margin: .5rem 0 1.5rem;
+            margin: .5rem .5rem 1.5rem;
             font-size: 1.8rem;
         }
         .date {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
             display: block;
             font-size: .8rem;
-            text-align: end;
-            margin-top: 1rem;
         }
+    }
+    .error {
+        font-weight: bold;
+        color: $red;
+        font-size: 2rem;
+    }
+    .error-btn {
+        cursor: pointer;
+        padding: 4px 8px;
+        margin: .5rem;
+        font-size: 1.4rem;
+        color: $black;
+        border: $black solid 2px;
+        border-radius: 2rem;
+        background-color: $white;
     }
     &.full {
         flex-direction: column;
@@ -352,7 +369,7 @@ footer {
             overflow-y: scroll;
         }
     }
-    #title,#banner {
+    #title,#banner,#password {
         background-color: $light;
         border: solid 2px $black;
         padding: 6px 10px;
