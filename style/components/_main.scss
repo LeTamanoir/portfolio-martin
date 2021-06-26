@@ -426,7 +426,7 @@ footer {
             align-items: center;
             flex-direction: column;
             position: absolute;
-            bottom: 30vh;
+            bottom: 20vh;
             left: 15vw;
             width: 70vw;
             height: auto;
@@ -450,6 +450,7 @@ footer {
             }
             #manage-image {
                 display: flex;
+                flex-wrap: wrap;
             }
             #manage-image div {
                 display: flex;
@@ -482,7 +483,7 @@ footer {
 
             button {
                 background-color: $blue;
-                &:nth-of-type(2),&:nth-of-type(3) {
+                &:nth-of-type(3),&:nth-of-type(4) {
                     background-color: $red;
                 }
             }
@@ -512,6 +513,11 @@ footer {
                 display: flex;
             }
         }
+    }
+    & > div:nth-of-type(4) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     #title,#banner,#password,#tags,#image-name {
         background-color: $light;

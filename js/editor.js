@@ -15,6 +15,7 @@ var image_container = document.querySelector("#image-container");
 var image_name = document.querySelector('#image-name');
 var manage_image_container = document.querySelector('#manage-image-container');
 var manage_image = document.querySelector('#manage-image-container > div');
+var rotation = 0;
 var old_wps;
 var cropper;
 var reader;
@@ -98,7 +99,7 @@ const modify = () => {
     }
 }
 
-function delete_wp() {
+const delete_wp = () => {
     if (!confirm('Are you sure ?')) {
         return null
     }
@@ -194,6 +195,17 @@ const delete_image = (name) => {
             }
         })
     }
+}
+
+const rotate_image = () => {
+
+    rotation == 360 ? rotation = 0 : rotation += 90;
+
+    if (cropper) {
+        cropper.rotateTo(rotation);
+    }
+    console.log(rotation)
+
 }
 
 update.style.display = 'none';

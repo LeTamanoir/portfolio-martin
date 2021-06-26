@@ -28,8 +28,8 @@ if ($_SESSION['allow_editor_access'] === true) {
         echo json_encode($writeups);
     }
     elseif ($_GET['action'] === 'upload_image') {
-        if (!file_exists('/var/www/WebSites/portfolio/prototype/images/' . $_POST['name'] . '.png')) {
-            file_put_contents('/var/www/WebSites/portfolio/prototype/images/' . $_POST['name'] . '.png', file_get_contents($_POST['image']));
+        if (!file_exists('/var/www/WebSites/portfolio/images/' . $_POST['name'] . '.png')) {
+            file_put_contents('/var/www/WebSites/portfolio/images/' . $_POST['name'] . '.png', file_get_contents($_POST['image']));
             echo '{"state":"success"}';
         }
         else {
@@ -38,11 +38,11 @@ if ($_SESSION['allow_editor_access'] === true) {
     }
     elseif ($_GET['action'] === 'manage_image') {
         if (!empty($_POST['name'])) {
-            unlink('/var/www/WebSites/portfolio/prototype/images/' . $_POST['name']);
+            unlink('/var/www/WebSites/portfolio/images/' . $_POST['name']);
             echo '{"state":"success"}';
         }
         else {
-            $files = scandir('/var/www/WebSites/portfolio/prototype/images/');
+            $files = scandir('/var/www/WebSites/portfolio/images/');
             unset($files[0]);unset($files[1]);
 
             echo json_encode($files);
@@ -62,8 +62,17 @@ elseif ($_GET['action'] === 'display' && !empty($_GET['id'])) {
     $request->execute([$_GET['id']]);
     $writeup = $request->fetchAll(PDO::FETCH_ASSOC);
     
-    if ($writeup[0]['password'] === $_GET['password'] || $writeup[0]['password'] === 'none' || $_SESSION['allow_editor_access'] === true) {
+    if ($writeup[0]['password'] === $_GET['password'] || $writeup[0]['password'] === 'none' || $_SESSION['allow_editor_access'] === true || in_array($writeup[0]['id'], $_SESSION['authorized_wp'])) {
+        
+        if (empty($_SESSION['authorized_wp'])) {
+            $_SESSION['authorized_wp'] = array($writeup[0]['id']);
+        }
+        elseif (!in_array($writeup[0]['id'], $_SESSION['authorized_wp'])) {
+            array_push($_SESSION['authorized_wp'],$writeup[0]['id']);
+        }
+
         echo json_encode($writeup);
+        
     } else {
         echo '{"state":"failed"}';
     }
