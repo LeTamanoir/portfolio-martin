@@ -62,7 +62,7 @@ elseif ($_GET['action'] === 'display' && !empty($_GET['id'])) {
     $request->execute([$_GET['id']]);
     $writeup = $request->fetchAll(PDO::FETCH_ASSOC);
     
-    if ($writeup[0]['password'] === $_GET['password'] || $writeup[0]['password'] === 'none' || $_SESSION['allow_editor_access'] === true || in_array($writeup[0]['id'], $_SESSION['authorized_wp'])) {
+    if ($writeup[0]['password'] === $_GET['password'] || $writeup[0]['password'] === 'none' || $_SESSION['allow_writeup_access'] === true || in_array($writeup[0]['id'], $_SESSION['authorized_wp'])) {
         
         if (empty($_SESSION['authorized_wp'])) {
             $_SESSION['authorized_wp'] = array($writeup[0]['id']);

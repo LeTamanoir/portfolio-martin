@@ -43,9 +43,14 @@
                 include('views/login.html');
             }
             else {
-                if ($_POST["username"] === $settings["username"] && md5($_POST["password"]) === $settings["password"]) {
+                if ($_POST["username"] === $settings["username_1"] && md5($_POST["password"]) === $settings["password_1"]) {
+                    $_SESSION['allow_writeup_access'] = true;
                     $_SESSION['allow_editor_access'] = true;
                     header('Location: ?page=editor');
+                } elseif ($_POST["username"] === $settings["username_2"] && md5($_POST["password"]) === $settings["password_2"]) {
+                    $_SESSION['allow_writeup_access'] = true;
+                    $_SESSION['allow_editor_access'] = false;
+                    header('Location: ?page=writeups');
                 } else { header('Location: ?page=login'); }
             }
             break;
